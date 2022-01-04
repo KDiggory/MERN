@@ -1,0 +1,24 @@
+~~~~~~~~~~ MongoDB ~~~~~~~~~~
+
+MySQL is a relational database - the data is stored in tables, these tables are relational to each other in some way --> primary and foreign keys!
+
+MongoDB is a non-relational database - the data is not stored in tables, it doesn't have to be related to each other (it can be related if you need it to be). 
+
+MongoDB works like a cloud storage provider
+- Its a document store.
+- Documents (objects) are stored within databases in the cluster. 
+- Documents are stored as BSON (Binary JavaScript Notation).
+{
+    "name": "Monty",
+    "species": "Iguadon"
+    }
+A BSON is just like a JSON! 
+Uses Key Value Pairs for the data storage
+
+
+A database - data related to a project
+Within the database - collections --> stores of documents
+Within collection - BSON objects
+
+Collections SHOULD contain similar data but they do not NEED to
+

@@ -1,0 +1,54 @@
+use aviary;
+
+db.createCollection('birds'); // dont have to make collection first actually!
+
+db.birds.insertOne(
+    {
+    'name': 'Felicity',
+    'type': 'falcon',
+    'colour':'brown',
+    'age' :4,
+    'birdOfPrey': true
+    }
+);
+
+db.birds.find();
+
+db.birds.find().pretty(); // these currently show the same thing
+
+db.birds.insertOne(
+    {
+    'name': 'Marco',
+    'type': 'merlin',
+    'colour':'grey and white',
+    'age' :1,
+    'birdOfPrey': true
+    }
+);
+
+db.birds.insertOne(
+    {
+    'name': 'Sunny',
+    'type': 'sparrow',
+    'colour':'brown',
+    'age' :2,
+    'birdOfPrey': false
+    }
+);
+
+db.birds.insertMany([
+    {
+    'name': 'Brenda',
+    'type': 'blackbird',
+    'colour':'black',
+    'age' :2,
+    'birdOfPrey': false
+    },
+    {
+        'name': 'Paulie',
+        'type': 'Parrot',
+        'colour':'Red and blue',
+        'age' :7,
+        'birdOfPrey': false
+        }]
+);

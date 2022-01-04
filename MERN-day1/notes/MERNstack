@@ -1,0 +1,22 @@
+MERN stack
+
+MERN            what            like what?
+
+MongoDB      database             MySQL
+NodeJS       backend source code   JAVA
+Express       framework            Spring  
+React        frontend               HTML
+
+Pros:
+- Less to learn as use JS for Node, Express and React ( BSON, Binary JS and Object notation for MongoDB).
+- Easier generally for codebases to interact with eachother when using hte same programming language.
+
+Cons:
+- Less efficient, JS is a jack of all trades but master of none, can't handle as well enterprise level backend. 
+- Doesn't work well with massive applications, mongoDB and react are fine with this, but NBodeJS and Express not so much. 
+- Not taking advantage of positives of other codebases. --> don't use the correct programming language for the correct jon - MERN doesn't do this. 
+
+Application:
+- Generally used for smaller start up companies which require a working codebase. 
+
+
