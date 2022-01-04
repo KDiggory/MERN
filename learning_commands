@@ -52,3 +52,386 @@ db.birds.insertMany([
         'birdOfPrey': false
         }]
 );
+
+db.birds.insertOne(
+    {
+    'name': 'Petunia',
+    'type': 'parrot',
+    'colour': [                 // this is putting in an array for the colour field
+        'red',
+        'blue',
+        'yellow',
+        'green'
+    ],
+    'age' :2,
+    'birdOfPrey': false
+    }
+);
+
+// insert an array of 3 docs into collection, each needs to contain 3 of the following string, array, boolean, number
+// each doc should have a unique value pair
+db.birds.insertMany([
+    {
+        'name' : 'Patricia',
+        'species' : 'Pied Wagtail',
+        'colour' : [
+            'black',
+            'white',
+            'grey'
+        ],
+        'age':1,
+        'large' : false
+    }
+,
+{
+    'name' : 'Florence',
+    'species' : 'flamingo',
+    'leg length' : 90,
+    'diet': 'krill',
+    'age' :6,
+
+
+},
+{
+    'name' : 'Harry',
+    'type' : 'hawk',
+    'species' : 'Harris hawk',
+    'diet': [
+        'rabbits',
+         'voles',
+         ['field mice', 'house mice', 'dormice']
+],
+'native' : false
+
+}
+]);
+
+// what data we want to see from the documents
+// waht specific documents we want to see
+
+db.birds.find(); // returns everything
+
+// Projection - tells mongoBD what fields you want to see 
+db.birds.find(
+    {},
+    {'name': true
+}
+);
+// id is shown by default
+db.birds.find(
+    {},
+    {'name': true,
+    '_id' :false
+}
+);
+
+// asking for something extra that they don't all have doesnt matter
+db.birds.find(
+    {},
+    {'name': true,
+    '_id' :false,
+    'species': true
+}
+);
+
+// simple queries to filter out data
+// passing in a partial object, if any documnet matches that object it returns the whole document
+db.birds.find(
+    {'species': 'flamingo'}   
+);
+// this returns the flamingo entry
+
+db.birds.insertMany([
+    {
+        'name' : 'Frappe',
+        'species' : 'flamingo',
+        'leg length' : 90,
+        'diet': 'krill',
+        'age' :9
+    }
+,
+{
+    'name' : 'Fleur',
+    'species' : 'flamingo',
+    'leg length' : 80,
+    'diet': 'krill',
+    'age' :6
+},
+{
+    'name' : 'Frankie',
+    'species' : 'flamingo',
+    'leg length' : 97,
+    'diet': 'krill',
+    'age' :7
+},
+]);
+
+db.birds.find(
+    {'species': 'flamingo'}   
+); // this now returns all 4 flamingos
+
+db.birds.findOne(
+    {
+        'species': 'flamingo'
+    }
+); // just gets the first instance of a flamingo
+
+
+// Query operators
+// check MORE than x = y
+// return IF age is GreaterThan 6
+db.birds.find(
+    {
+        'age': { '$gt' : 6}
+    }
+);
+// returns all birds with age greater than 6
+
+$gt = GreaterThan
+$lt = lessThan
+$gte = greater thanOrEqual
+$ne = NotEqual
+$in = in
+$nin = notIn
+
+// These are CASE SENSITIVE!
+
+// Queries for arrays
+
+db.birds.find(
+    {
+        'colour' : {'$in' : [ 'red']}
+    }
+);
+ // returns the parrts with red as a part of an array in the colour field
+
+ // add more documents to the collection (so you can use all the following queries)
+ db.birds.insertMany([
+    {
+        'name' : 'Boris',
+        'species' : 'bull finch',
+        'diet': ['seeds', 'nuts', 'berries'],
+        'age' : 2,
+        'hungry' :false
+    }
+,
+{
+    'name' : 'Brandy',
+    'species' : 'bull finch',
+    'diet': ['seeds', 'nuts', 'berries'],
+    'age' :1, 
+    'hungry' :true
+},
+{
+    'name' : 'Bertha',
+    'species' : 'bull finch',
+    'diet': ['seeds', 'nuts', 'berries', 'worms'],
+    'age' :1,
+    'hungry' :true
+},
+]); 
+ // read all
+ db.birds.find();
+ // equals
+ db.birds.find(
+    {
+        'colour' : 'black'
+    }
+);
+ // doesn't equal
+ db.birds.find(
+    {
+        'species' : {'$ne' : [ 'flamingo']}
+    }
+);
+ // less than
+ db.birds.find(
+    {
+        'age': { '$lt' : 6}
+    }
+);
+
+ // greater than or equals
+ db.birds.find(
+    {
+        'age': { '$gte' : 9}
+    }
+);
+ // in 
+ db.birds.find(
+    {
+        'diet': { '$in' : [ 'worms'] }
+    }
+);
+ // not in
+ db.birds.find(
+    {
+        'diet': { '$nin' : [ 'worms'] }
+    }
+);
+
+ 
+
+// stretch - do them as projections to just get what you want
+ // equals
+ db.birds.find(
+    {'colour' : { '$eq' : 'black'}},
+    {'name': true,
+    '_id' :false
+    }
+);
+
+db.birds.find(
+    {'colour' : { '$eq' : 'black'}},
+    {'name': true,
+    'type' : true,
+    'species' : true,
+    '_id' :false
+}
+);
+ // doesn't equal
+
+ db.birds.find(
+    {'species' : {'$ne' : [ 'flamingo']}},
+    {'name': true,
+    '_id' :false
+}
+);
+ // less than
+ db.birds.find(
+     {    'age': { '$lt' : 6}},
+    {
+        'name': true,
+        '_id' :false
+    }
+);
+
+ // greater than or equals
+ db.birds.find(
+     {'age': { '$gte' : 9}}, 
+    {   'name': true,
+        '_id' :false
+    }
+);
+ // in 
+ db.birds.find(
+     {'diet': { '$in' : [ 'worms'] }},
+    {
+        'name': true,
+        '_id' :false
+    }
+);
+ // not in
+ db.birds.find(
+    { 'diet': { '$nin' : [ 'worms'] }}, 
+    {
+        'name': true,
+        '_id' :false
+    }
+);
+
+
+// updating
+db.birds.updateOne(
+    { 'name': 'Harry' 
+},
+    {
+        '$set': {
+            'name' : ' Harold'}
+    }
+);
+
+// adding a new field // this isnt working for some reason
+db.birds.updateOne(
+    { 'name': 'Harold' 
+},
+{
+    '$set': { 'isBrave' : true}
+}
+);
+
+// then find the changed one to check // this isnt showing the new field
+db.birds.find( 
+    {
+        'name' : ' Harold'
+    }
+);
+
+// updateMany
+db.birds.updateMany(
+    {},
+    {'$set' : {'Avian' : true}}
+);
+
+//update certain ones
+db.birds.updateMany(
+    {
+        'birdOfPrey': true
+    },
+    { '$set' : { 'awesome' : true}}
+);
+
+db.birds.find( 
+    {
+        'birdOfPrey' : true
+    }
+);
+
+// deleting things
+// deleteOne - delete the first thing that matches that query and deletes
+// deleteMany - find all and delete them 
+db.birds.deleteOne( // only deletes one 
+    { 
+        'age' : {'$gte' : 7 }
+    }
+);
+
+db.birds.deleteMany( // deletes all with an age or more than or equal ot 7
+    { 
+        'age' : {'$gte' : 7 }
+    }
+);
+
+// update one document - changing a field and giving it a new field
+db.birds.updateOne(
+    { 'name': 'Marco' 
+},
+    {
+        '$set': {
+            'name' : ' Marco the Magnificent'}
+    }
+);
+
+db.birds.find( 
+    {
+        'name' : ' Marco the Magnificent'
+    }
+);
+// update all documents giving them a new field
+db.birds.updateMany(
+    {
+        'species': 'flamingo'
+    },
+    { '$set' : { 'colour' : 'pink'}}
+);
+
+db.birds.find( 
+    {
+        'species' : 'flamingo'
+    }
+);
+//delete one document with a specific query
+
+db.birds.deleteOne( 
+    {
+        'name' : 'Fleur'
+    }
+);
+
+// delete all documents with a different query
+
+db.birds.deleteMany( 
+    { 
+        'age' : {'$gte' : 6 }
+    }
+);
