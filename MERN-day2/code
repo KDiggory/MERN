@@ -1,0 +1,114 @@
+db.habitat.insertOne(
+    {
+        'name' : 'hedgerow',
+        'capacity': 100,
+        'birds' :
+        {
+            'name' : ' Sonny',
+            'species' : 'sparrow'
+        }
+    }
+);
+
+// This is an embedded document, the bird is an embedded document within the habitat
+
+// can also add more than one embedded document using square brackets
+db.habitat.insertOne(
+    {
+        'name' : 'sycamore tree',
+        'capacity': 15,
+        'birds' : [
+        {
+            'name' : ' Selina',
+            'species' : 'sparrow'
+        }, 
+        {
+            'name' : ' Simon',
+            'species' : 'sparrow'
+        }, 
+        {
+            'name' : ' Sasha',
+            'species' : 'sparrow'
+        }
+        ]
+    }
+);
+
+// to update a bird in the habitat
+// this changes the whole bird section of the habitat - this doesnt work, missing semicolon
+db.habitat.updateMany(
+        {'name' : 'sycamore tree'},
+    { 
+        '$set' : { 
+            'birds' : [
+        {
+            'name' : ' Sharon',
+            'species' : 'sparrow'
+        }, 
+        {
+            'name' : ' Sally',
+            'species' : 'sparrow'
+        }, 
+        {
+            'name' : ' Sasha',
+            'species' : 'sparrow'
+        }
+        ]
+        }
+    }
+);
+// other way would be using set bird where name is equal to .... 
+
+
+
+db.habitat.find();
+
+// embedded in embedded in embedded
+
+db.habitat.insertOne(
+    {
+        'name' : 'mixed hedgerow',
+        'capacity': 100,
+        'plant species' : [
+            {
+            'name' : 'hawthorne',
+            'type' : 'spiky',
+            'birds' : [
+        {
+            'name' : ' Dora',
+            'species' : 'dunnet'
+        }, 
+        {
+            'name' : ' Felicity',
+            'species' : 'finch'
+        } ] 
+            },
+            {
+            'name' : 'crab apple',
+            'type' : 'sour',
+            'birds' : [
+        {
+            'name' : ' Billy',
+            'species' : 'blue tit'
+        }, 
+        {
+            'name' : ' Bonnie',
+            'species' : 'bull finch'
+        } ]
+            },
+            {
+            'name' : 'blackthorn',
+            'type' : 'good for gin',
+            'birds' : [
+        {
+            'name' : ' Gill',
+            'species' : 'great tit'
+        }, 
+        {
+            'name' : ' Fabio',
+            'species' : 'finch'
+        } ]
+            } ]
+    }
+);
+
