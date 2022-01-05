@@ -1,0 +1,4 @@
+JS is a single threaded processing language meaning only one stack can be running at a time.
+We need to change the way we write the backend!
+
+NodeJS converts from simple JS to a JS Runtime --> rather than running a single script from top to bottom the user is able to run commands on a running app. 
