@@ -10,5 +10,10 @@ You can write JS commands into the shell like you can when using the browser.
 
 When you need to exit node (because we wont use it to write all our code), press ctrl+c or type.exit
 
-You know you aren't in node anymore because the > is gone
+You know you aren't in node anymore because the > is gone.
+
+Using node, we can tell it to run JS files - like running a shell script in linux
+
+
+
 
