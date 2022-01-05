@@ -4,7 +4,9 @@
   "description": "npm practice",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hello": "echo ' hello everyone!",
+    "start": "node index.js"
   },
   "author": "katie",
   "license": "ISC",

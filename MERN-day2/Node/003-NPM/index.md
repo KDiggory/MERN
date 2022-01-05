@@ -24,4 +24,26 @@ author -can be left empty
 license - ISC
 is this ok? - yes
 
-need to use npm install
+need to use npm install in the shell first before running the script.
+
+Other commands and tips for node
+
+NPM/ node scripts we can use --> can access by typing npm run <script name>
+
+useful --> "start": "node index.js" --> this runs the script 
+
+some named scripts can run without specifying run:
+restart
+start
+stop
+test 
+just type npm start/stop etc
+
+
+//USEFUL//
+If you were to clone down a repo, it wouldnt have the node modules you need to install node modules for dependencies.
+--> use npm install
+It looks at the package.json and sees what needs to be installed. 
+
+To remove packages
+use npm remove <package name>
