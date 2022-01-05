@@ -24,3 +24,4 @@ author -can be left empty
 license - ISC
 is this ok? - yes
 
+need to use npm install
