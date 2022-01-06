@@ -1,0 +1,19 @@
+{
+  "name": "npm-practice",
+  "version": "1.0.0",
+  "description": "npm practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hello": "echo ' hello everyone!",
+    "start": "node index.js"
+  },
+  "author": "katie",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-cats": "^1.1.1",
+    "casual": "^1.6.2",
+    "cool-ascii-faces": "^1.3.4",
+    "everyday-fun": "^1.1.0"
+  }
+}
