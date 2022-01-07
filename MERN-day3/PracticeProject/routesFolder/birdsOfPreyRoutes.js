@@ -3,6 +3,10 @@
 // Importing in the router function of the express object
 const router = require('express').Router();
 
+// import nested middleware from server.js file -- instead make a separate middleware file
+// const time = require('../server.js');
+// const smile = require('../server.js');
+
 // All of our routes go below and use router instead of app.
 
 // CRUD functionality
