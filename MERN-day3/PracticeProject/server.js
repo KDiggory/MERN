@@ -7,6 +7,7 @@ const app = express();
 
 // Common middleware
 app.use(express.json());
+app.use(cors()); // tells app to use cors to avoid cors issues
 
 // custom middleware 1
 app.use((req, res, next) => {
@@ -33,6 +34,8 @@ const smile = (req, res, next) => {
     next();
 };
 
+
+
 // Add the Birds route (as birdRoutes) into the server.js file
 const birdRoutes = require('./routesFolder/birdRoutes.js');
 
@@ -48,3 +51,7 @@ app.use('/birdOfPrey', birdOfPreyRoutes);
 const server = app.listen(5015, () => {
     console.log(`server started successfully on port ${server.address().port}`);
 });
+
+// Export nested middleware to routes
+// module.exports.time = time;
+// module.exports.smile = smile;
