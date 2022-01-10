@@ -12,14 +12,33 @@ const {Bird} = require('../persistence/models/bird.js');
 
 // CRUD functionality
 //Create
-router.post('/create', (req, res) => {
+router.post('/create', (req, res, next) => {
     console.log(req.body); 
     // pass the req body into the schema and generate a new bird object
     const bird = new Bird(req.body); 
     bird.save().then((result) =>{
-        res.status(201).send('bird created')
+        res.status(201).send(`${result.birdName} added to aviary`)
     })
     
+    .catch((error) => {
+        if (bird.birdName = 'undefined') {
+            console.log(bird.birdName); // this is coming back as undefined now?!! why?????
+        //create an error object for us to handle
+        const errorMessage = new Error(`There is a problem here! You need to give your bird a name!`);
+        // pass our error to error handling middleware
+        next(errorMessage);
+        }
+        else if (bird.age <= 0) {
+            console.log('does this fire?');
+        const errorMessage = new Error(`Your bird is still an egg`);
+        // pass our error to error handling middleware
+        next(errorMessage);
+         }
+         else {
+            const errorMessage = new Error(`Looks fine! Why are you in the error message??`);
+            next(errorMessage);
+         }
+    }) 
 });
 
 // Get All birds - just asking it to send everything back

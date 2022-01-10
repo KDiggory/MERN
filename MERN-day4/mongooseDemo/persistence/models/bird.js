@@ -28,7 +28,10 @@ const birdSchema = new Schema({
         max: 20              // maximum length
     },
     species: String,
-    age: Number,
+    age: {
+        type: Number,
+        required: true
+    },
     isCarnivore: Boolean,
     // An array of embedded documents
     faveFood: [foodSchema],
@@ -46,7 +49,8 @@ const birdSchema = new Schema({
 });
 
 // creating bird model
-const Bird = model('Bird', birdSchema);
+
+const Bird = mongoose.model('Bird', birdSchema);
 
 // export the model
 module.exports = {'Bird': Bird};

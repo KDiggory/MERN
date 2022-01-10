@@ -9,7 +9,13 @@ const app = express();
 
 // Common middleware
 app.use(express.json());
-app.use(cors);
+app.use(cors());
+
+// Error handling
+app.use((errorMessage, req, res, next) => {
+    console.log(errorMessage.stack);
+    res.status(500).send(errorMessage.message); 
+});
 
 // database connection - is normally in a different file, but in here for simplicity
 // Uses a URI - link to a service through the internal network
@@ -27,18 +33,18 @@ mongoose.connect('mongodb://localhost:27017/aviary', {useNewUrlParser: true},
 // use routes
 app.use('/bird', birdRoutes)
 
-// Creating the bird model
-// model is an inbuilt function in mongoose, it takes in the name and uses what you pass in as model plans
-const Bird = model('Bird', birdSchema);
+// Add error handling middleware - Adding in errorMessage
+// when a route says next(errorMessage) it will find the next middleware with (errorMessage) as a parameter
 
-// Export the model
-module.exports = {'Bird': Bird};
-// again different to other exporting
-// 'Bird': Bird is an object and we are saying export it
+
+app.get('/', (req, res) => {
+    console.log('connected');
+    res.send('this has worked');
+});
 
 
 
 // listen on port 5015
-const server = app.listen(5015, () => {
+const server = app.listen(5322, () => {
     console.log(`server started successfully on port ${server.address().port}`);
 });
