@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose'); 
+const birdRoutes = require('./routes/birdRoutes.js');
 
 // Initialise app as the express function
 const app = express();
@@ -23,10 +24,17 @@ mongoose.connect('mongodb://localhost:27017/aviary', {useNewUrlParser: true},
     }
 });
 
+// use routes
+app.use('/bird', birdRoutes)
 
+// Creating the bird model
+// model is an inbuilt function in mongoose, it takes in the name and uses what you pass in as model plans
+const Bird = model('Bird', birdSchema);
 
-
-
+// Export the model
+module.exports = {'Bird': Bird};
+// again different to other exporting
+// 'Bird': Bird is an object and we are saying export it
 
 
 

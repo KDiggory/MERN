@@ -12,3 +12,4 @@ nmp i mongoose express cors
 2 - Creating bird schemas / objects in a separate file
 3 - modifying our routes sot hey post, get, update and delete from the database - crud functionality
 
+Once wqe have made our schema we need to model it
