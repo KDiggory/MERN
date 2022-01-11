@@ -1,0 +1,6 @@
+{
+    "scripts": {
+      "test": "mocha",
+      "coverage": "nyc npm run test"
+    }
+  }
