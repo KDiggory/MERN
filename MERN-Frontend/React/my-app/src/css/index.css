@@ -21,3 +21,14 @@ h4 {
 p {
   color:rgb(52, 36, 110);
 }
+
+footer {
+  transform: rotate(15deg);
+  background-color: pink;
+  width: 30%;
+  
+}
+
+#pageBody {
+  background-color:rgb(161, 141, 233)
+}

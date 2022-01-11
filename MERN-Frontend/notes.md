@@ -36,4 +36,20 @@ scr folder
 The top level is the page --> app.js
 Each component is then a child of that
 
+# Props
 
+Props are pieces of data that are passed from a parent component to a child component
+Data within reactis uni directional ( flows in one way, from top to bottom)
+Data goes from the top to the bottom, not the other way round.
+
+If data is needed by a file in 2 parent child sections then it needs to be stored in a common progenitor - so it can go to both.
+
+Props are a means to pass data from parent to child ( just like a parameter)
+
+        app.js
+          |
+          V
+       PizzaOrder
+          |
+          V
+        
