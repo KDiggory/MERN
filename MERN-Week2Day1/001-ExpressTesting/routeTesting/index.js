@@ -17,11 +17,19 @@ app.use((errorMessage, req, res, next) => {
     res.status(500).send(errorMessage.message); 
 });
 
+// PROD URI
+ let dbURI = 'aviary';
+
+// test URI
+// let dbURI = 'testAviary';
+
+// then put one of these variables into the localhost address below
+
 // database connection - is normally in a different file, but in here for simplicity
 // Uses a URI - link to a service through the internal network
 // connect to MongoDB with - mongoose.connect(uri, options)
 //mongoose.connect('mongodb://localhost:27017/<dbName>') - this is the address for mongodb by default
-mongoose.connect('mongodb://localhost:27017/aviary', {useNewUrlParser: true}, 
+mongoose.connect(`mongodb://localhost:27017/${dbURI}`, {useNewUrlParser: true}, 
 (error) => {
     if(error) {
         console.log('Error, cant connect to database');

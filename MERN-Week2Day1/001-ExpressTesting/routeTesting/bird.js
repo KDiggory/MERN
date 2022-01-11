@@ -28,22 +28,22 @@ const birdSchema = new Schema({
         max: 20              // maximum length
     },
     species: String,
-    age: {
-        type: Number,
-        required: true
-    },
+    // age: {
+    //     type: Number,
+    //     required: true
+    // },
     isCarnivore: Boolean,
     // An array of embedded documents
     faveFood: [foodSchema],
     // A single embedded document
-    habitat: {
-        habitatName: {
-            type: String,
-            required: true,
-            min: 3 
-        },
-        capacity: Number
-    },
+    // habitat: {
+    //     habitatName: {
+    //         type: String,
+    //         required: true,
+    //         min: 3 
+    //     },
+    //     capacity: Number
+    // },
     //Array of Strings
     eggNumbers: [Number]
 });

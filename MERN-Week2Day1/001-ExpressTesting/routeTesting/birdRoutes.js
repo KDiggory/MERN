@@ -7,6 +7,7 @@ router.get('/test', (req, res) => {
     res.status(201).send('Test path successful')
 });
 
+const bird = require('../../../MERN-day4/mongooseDemo/persistence/models/bird.js');
 // Import in the model
 const {Bird} = require('./bird.js');
 // need to deconstruct and import as itself
@@ -21,12 +22,13 @@ router.post('/create', (req, res, next) => {
     // pass the req body into the schema and generate a new bird object
     const bird = new Bird(req.body); 
     bird.save().then((result) =>{
+    console.log('==================================================================');
+    console.log(result);
         res.status(201).send(`${result.birdName} added to aviary`)
     })
     
     .catch((error) => {
         if (bird.birdName = 'undefined') {
-            console.log(bird.birdName); // this is coming back as undefined now?!! why?????
         //create an error object for us to handle
         const errorMessage = new Error(`There is a problem here! You need to give your bird a name!`);
         // pass our error to error handling middleware
@@ -58,24 +60,27 @@ router.get('/get/:id', (req, res) => {
     Bird.findById(req.params.id, (error, bird)=> {
         res.status(200).send(`here is the bird you requested: ${bird}`)
     })
-    res.status(202).send(`read by id accessed: ${req.params.id} requested`);
 });
 
 
 
 router.put('/update/:id', (req, res) => {
-    console.log(req.body); // update has 2 parts - the body you are adding and the params id
-    console.log(req.params.id);
-    res.status(200).send(`update accessed: ${req.params.id} requested`);
+    const body = req.body;
+    const id = req.params.id;
+    console.log(body); // update has 2 parts - the body you are adding and the params id
+    console.log(id);
+    Bird.findByIdAndUpdate(id, body, (error) => {
+        res.status(200).send(`${req.body.birdName} updated`);
+    }) 
 });
 // can also do update the same way that delete is done below - using query parameters
 
 // using query params for delete, that means you dont need to specify in path
 // delete?name=katie --> this is more flexible than setting it as id only
-router.delete('/delete', (req, res) => {
-    console.log(req.query);
-    res.status(204); // cant send text back when you use a 204
-});
+// router.delete('/delete', (req, res) => {
+//     console.log(req.query);
+//     res.status(204); // cant send text back when you use a 204
+// });
 // other option
 router.delete('/delete/:id', (req, res) => {
     console.log(req.params.id);
@@ -84,8 +89,6 @@ router.delete('/delete/:id', (req, res) => {
     })
     
 });
-
-
 
 // Export our router for server.js to use
 module.exports = router; 
