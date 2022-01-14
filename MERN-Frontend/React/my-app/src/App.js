@@ -18,21 +18,22 @@
 // import ExerciseTwo from './components/Hooks-useEffect/QAC-exercises/ExerciseTwo';
 
 // Importing for routing
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+// import {
+//   BrowserRouter,
+//   Routes,
+//   Route
+// } from "react-router-dom";
 
-import About from './components/routingWithReact/About';
-import Home from './components/routingWithReact/Home';
-import Shop from './components/routingWithReact/Shop';
-import Nav from './components/routingWithReact/Nav';
-import Footer from './components/routingWithReact/Footer';
-import Basket from "./components/routingWithReact/Basket";
-import ShopSubChild from "./components/routingWithReact/ShopSubChild";
+// import About from './components/routingWithReact/About';
+// import Home from './components/routingWithReact/Home';
+// import Shop from './components/routingWithReact/Shop';
+// import Nav from './components/routingWithReact/Nav';
+// import Footer from './components/routingWithReact/Footer';
+// import Basket from "./components/routingWithReact/Basket";
+// import ShopSubChild from "./components/routingWithReact/ShopSubChild";
 
 import Bar from "./components/requestHandling/Bar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import './css/App.css';
