@@ -52,4 +52,45 @@ Props are a means to pass data from parent to child ( just like a parameter)
        PizzaOrder
           |
           V
-        
+        Pizza
+
+# React States
+
+State is data that can change 
+By change it can be affected by user input, new data coming in, local JS data
+
+Static data - data we've passed to our components as props
+
+How to tell our components this data can change?? - State --> This is a type of data that is passed as a prop
+    -   State is a type of data we can pass to our components
+    -   We can store this data as 'state'
+    -   Rather than passing data we pass a function, similar to getters and setters in spring!
+
+Rules for using state:
+    -   State should be stored in the lowest common component
+    -   If need be, redesign your hierarchy to have a sensible location of state
+    -   You can create components for the sole purpose of storing state
+
+# Rendering
+
+Taking the data from the virtual DOM and displaying it on the webpage.
+The point that all components and variables are instantiated.
+
+When does this occur?
+  - When the server/app starts
+  - When state changes setCount(5) --> Infinite loop 
+  - When new data is passed as props to components
+
+Writing set<variable> directly in code - it causes an infinite loop because it renders, sees the set and renders again.
+
+This rendering is a part of react - automatically happens
+
+# UseEffect()
+
+A function that runs after EVERY RENDER
+  - Can update the DOM or component with new data
+  - Ensuring components are loading properly
+  -  Resetting or defaulting variables
+  - GArbage collection
+
+  -  Can pass in a second parameter which will be state useEffect

@@ -35,4 +35,8 @@
   to {
     transform: rotate(360deg);
   }
+
+img {
+  size: 25% ;
+}
 }
